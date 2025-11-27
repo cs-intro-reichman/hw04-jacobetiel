@@ -28,6 +28,6 @@ public class Primes {
                     System.out.println(i);
                 }
             }
-        System.out.println("There are "+p_counter+" prime numbers between 2 and "+ N+" ("+(p_counter*100/N)+"% are primes)");
+        System.out.println("There are "+p_counter+" primes between 2 and "+ N+" ("+(p_counter*100/N)+"% are primes)");
     }
 }
