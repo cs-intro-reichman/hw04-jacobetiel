@@ -17,10 +17,56 @@ public class KeywordsDetector {
         String[] keywords = {"synergy", "disrupt", "leverage", "Paradigm", "transform"};
         detectAndPrint(sentences, keywords);
     }
+    public static String lowerCase(String str) {
+        String newstr = new String();
+        char add;
+        for (int i=0; i<str.length();i++){
+            add = str.charAt(i);
+            if (add == 32 || add >= 48 && add <= 57){
+                newstr+= add;
+                continue;
+            }
+            if (add < 97)
+                add+=32;
+            newstr+= add;
+        }
+        return newstr;
+    }
+    /** If str1 contains str2, returns true; otherwise returns false. */
+    public static boolean contains(String str1, String str2) {
+        if (str1.length()<str2.length())
+            return false;
+        String sub;
+        for(int i=0; i<(str1.length()-str2.length()+1);i++){
+            sub = str1.substring(i, str2.length()+i);
+            if (str2.compareTo(sub)== 0)
+                return true;
+        }
+        return false;
+    }
+
+
 
     // Iterates through all the sentences.
     // If a sentence contains one or more of the kewords, prints it.
     public static void detectAndPrint(String[] sentences, String[] keywords) {
-        // Replace this comment with your code
+        for (int i = 0; i < sentences.length; i++) {
+            String sentence = sentences[i];
+            String sentenceLower = lowerCase(sentence);
+            boolean found = false;
+
+            for (int j = 0; j < keywords.length; j++) {
+                String keywordLower = lowerCase(keywords[j]);
+
+                if (contains(sentenceLower, keywordLower)) {
+                    System.out.println(sentence); 
+                    found = true;
+                    break;     
+                }
+            }
+        }
     }
+        
 }
+
+
