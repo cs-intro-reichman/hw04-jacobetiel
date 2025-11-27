@@ -156,6 +156,8 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
+        if (str1 == null && str2 == null)
+            return 0;
         if (str1 == null || str2 == null)
             return -2;
         int short_len = str1.length();
